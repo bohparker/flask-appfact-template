@@ -4,4 +4,4 @@ from . import views_bp as bp
 
 @bp.route('/')
 def index():
-    return 'hello'
+    return render_template('index.html')

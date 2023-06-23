@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{url_for('static', filename='images/favicons/favicon.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='images/favicons/apple-touch-icon.png')}}">
+</head>
+<body>
+
+<div id="container">
+
+    <!-- mobile nav links -->
+    <nav class="mobile-nav">
+      <div id="menu-links">
+        <a href="{{url_for('views_bp.index')}}">Cat One</a>
+        <a href="{{url_for('views_bp.index')}}">Cat Two</a>
+      </div>
+      <!-- nav button -->
+      <a class="nav-button" onclick="menu()">
+        <div id="accordian">&#9776;</div>
+      </a>
+    </nav>
+    
+    <!-- nav for tablet and desktop -->
+    <nav class="tab-desk">
+      <ul>
+        <li><a href="{{url_for('views_bp.index')}}">Home</a></li>
+      	<li><a href="{{url_for('views_bp.index')}}">Cat One</a></li>
+      	<li><a href="{{url_for('views_bp.index')}}">Cat Two</a></li>
+        <li><a href="{{url_for('views_bp.index')}}">Cat Two</a></li>
+      </ul>
+    </nav>
+
+    <main>
+
+      <div>
+        {% for category, message in get_flashed_messages
+          (with_categories=true) %}
+          <div class="flash-message {{category}}">
+            {{message}}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% block content %}{% endblock %}
+
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2023 Bo Hendrix Parker</p>
+    </footer>
+  
+    </div>
+  
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
+  </body>
+  </html>
+
+</div>
+
+</body>
+</html>
