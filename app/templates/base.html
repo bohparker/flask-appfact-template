@@ -45,6 +45,18 @@
         {% endfor %}
       </div>
 
+      <!-- Login Buttons -->
+      {% if current_user.is_authenticated %}
+            <div class="login-links">
+                <a href="{{ url_for('auth_bp.logout') }}">Logout</a>
+            </div>
+        {% else %}
+            <div class="login-links">
+                <a href="{{ url_for('auth_bp.login') }}">Login</a> | 
+                <a href="{{ url_for('auth_bp.register') }}">Register</a>
+            </div>
+        {% endif %}
+
       {% block content %}{% endblock %}
 
     </main>

@@ -1,6 +1,8 @@
 Flask
+Flask-Login
 Flask-Migrate
 Flask-SQLAlchemy
+Flask-WTF
 greenlet
 python-dotenv
 psycopg2-binary
