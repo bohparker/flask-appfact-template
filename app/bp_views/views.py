@@ -1,5 +1,5 @@
 from flask import render_template
-from . import views_bp as bp
+from . import bp_views as bp
 
 
 @bp.route('/')

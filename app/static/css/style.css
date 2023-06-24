@@ -1,5 +1,5 @@
 /* CSS RESET */
-#container, body, header, nav, main, .mobile-header, .nav-button, .mobile-nav, footer, a, div, h1, h3, h4, h5, p, img, ul, figure, figcaption, section, article, aside, .grid2, video {
+#container, body, header, nav, main, .mobile-header, .nav-button, .mobile-nav, p, footer, a, div, h1, h3, h4, h5, p, img, ul, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -60,10 +60,6 @@ width: 75%;
 min-width: 250px;
 }
 
-main {
-    padding: 4%;
-}
-
 a {
     text-decoration: none;
 }
@@ -72,19 +68,19 @@ a:hover {
     text-decoration: underline;
 }
 
-#menu-links a {
-margin: 0;
-border-bottom: 1px;
-}
-
 
 /* NAV */
+#menu-links a {
+    margin: 0;
+    border-bottom: 1px;
+}
+
 .nav-button {
-display: block;
-position: absolute;
-top: 0;
-right: 0;
-color: #000;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #000;
 }
 
 .mobile-nav {
@@ -102,11 +98,17 @@ font-size: 1.5em;
 font-size: 1.5em;
 }
 
+.login-links {
+    float: right;
+    margin: 0.5em 0 0.5em 0;
+}
+
 
 /* main */
 main {
 padding: 1.2em;
-font-size: 1.1em
+font-size: 1.1em;
+margin-top: 60px;
 }
 
 
@@ -122,6 +124,30 @@ text-align: center;
 font-size: 0.8em;
 padding: 0 1em;
 }
+
+
+/* Forms */
+.form {
+    width: 70%;
+}
+
+.form-grid label {
+    display: block;
+}
+
+.form-grid input {
+    width: 100%;
+    display: block;
+    margin-bottom: 0.5em;
+    padding: 8px 8px;
+    border-radius: 4px;
+    float: left;
+}
+
+input[type=submit]:hover {
+    background-color: #fff;
+}
+
 
 /* mobile class for mobile screens */
 .mobile {
@@ -204,6 +230,10 @@ font-size: 1.2em;
 
     input[type=submit]:hover {
         cursor: pointer;
+    }
+
+    main {
+        margin-top: 0;
     }
 
 }

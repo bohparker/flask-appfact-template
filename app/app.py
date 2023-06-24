@@ -20,7 +20,7 @@ def create_app():
     migrate.init_app(app, db)
     csrf.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'auth_bp.login'
+    login_manager.login_view = 'bp_auth.login'
     login_manager.login_message_category = 'info'
 
     from .models import User
@@ -29,11 +29,11 @@ def create_app():
         id = int(user_id)
         return db.session.get(User, id)
 
-    from .views_bp import views_bp
-    app.register_blueprint(views_bp)
+    from .bp_views import bp_views
+    app.register_blueprint(bp_views)
 
-    from .auth_bp import auth_bp
-    app.register_blueprint(auth_bp)
+    from .bp_auth import bp_auth
+    app.register_blueprint(bp_auth)
 
     # error handling
     @app.errorhandler(404)

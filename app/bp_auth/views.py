@@ -4,7 +4,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 from ..app import db, login_manager
 from ..models import User
-from . import auth_bp as bp
+from . import bp_auth as bp
 from .forms import LoginForm, RegistrationForm
 
 
@@ -12,7 +12,7 @@ from .forms import LoginForm, RegistrationForm
 @login_manager.unauthorized_handler
 def redirect_to_login():
     flash('You must be logged in to view this page.', 'info')
-    return redirect(url_for('auth_bp.login'))
+    return redirect(url_for('bp_auth.login'))
 
 
 @bp.before_request
@@ -24,7 +24,7 @@ def get_current_user():
 def register():
     if current_user.is_authenticated:
         flash('You are already logged in.', 'info')
-        return redirect(url_for('views_bp.index'))
+        return redirect(url_for('bp_views.index'))
     
     form = RegistrationForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -44,7 +44,7 @@ def register():
 
         login_user(new_user)
         flash('You have been registered!', 'success')
-        return redirect(url_for('views_bp.index'))
+        return redirect(url_for('bp_views.index'))
     
     if form.errors:
         for error, message in form.errors.items():
@@ -58,7 +58,7 @@ def register():
 def login():
     if current_user.is_authenticated:
         flash('You are already logged in.', 'info')
-        return redirect(url_for('views_bp.index'))
+        return redirect(url_for('bp_views.index'))
     
     form = LoginForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -71,7 +71,7 @@ def login():
         if existing_user and existing_user.check_password(password):
             login_user(existing_user)
             flash(f'Welcome, {existing_user.username}.', 'success')
-            return redirect(url_for('views_bp.index'))
+            return redirect(url_for('bp_views.index'))
         
         else:
             flash('Invalid username or password', 'warning')
@@ -90,4 +90,4 @@ def login():
 def logout():
     logout_user()
     flash('You have been logged out.', 'info')
-    return redirect(url_for('views_bp.index'))
+    return redirect(url_for('bp_views.index'))
